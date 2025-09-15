@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'agent-online' }   // Jenkins agent label
+    agent { label 'Prabhu' }   // Jenkins agent label
 
     environment {
         APP_DIR = "/home/ubuntu/sample-nodejs"
@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 dir("${APP_DIR}") {
-                    git branch: 'main', url: 'https://github.com/etichiranjeevi/sample-nodejs.git'
+                    git branch: 'main', url: 'https://github.com/Prabhupadige03/sample-nodejs.git'
                 }
             }
         }
