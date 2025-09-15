@@ -4,6 +4,7 @@ pipeline {
     environment {
         APP_DIR = "/home/ubuntu/sample-nodejs"
         APP_NAME = "sample-nodejs"   // PM2 process name (you can change if you want)
+         PORT = "3000"
     }
 
     stages {
