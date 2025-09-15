@@ -26,16 +26,12 @@ pipeline {
         stage('Run Application with PM2') {
             steps {
                 dir("${APP_DIR}") {
-                    sh '''
-                        # Stop old instance if running
-                        pm2 delete $APP_NAME || true
+                    sh """
+                        sudo -u ubuntu pm2 delete $APP_NAME || true
+                        sudo -u ubuntu PORT=$PORT pm2 start ./bin/www --name $APP_NAME --update-env
+                        sudo -u ubuntu pm2 save
+                    """
 
-                        # Start new instance with PM2
-                        pm2 start ./bin/www --name $APP_NAME
-
-                        # Save PM2 state (so it survives reboot if needed)
-                        pm2 save
-                    '''
                 }
             }
         }
